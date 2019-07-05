@@ -1,0 +1,27 @@
+version: 2.0
+jobs:
+  test:
+    docker:
+      - image: circleci/python
+    steps:
+      - checkout
+      - run: 
+          name: codeAcademy_Reza
+          command: python run.py
+      - store_test_results:
+          path: build/test-results
+        
+  
+  dockerize:
+   machine: true
+   steps:
+     - checkout
+     # Login to docker
+     - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+     # build the application image
+     - run: docker build -t $DOCKER_USER/app:$CIRCLE_SHA1 .
+
+     # deploy the image
+     - run: docker push $DOCKER_USER/app:$CIRCLE_SHA1
+     
