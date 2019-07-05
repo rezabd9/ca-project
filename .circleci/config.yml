@@ -10,7 +10,7 @@ jobs:
           
           command: | 
             sudo pip install -r requirements.txt
-                   python myscript.py
+                   python test.py
       - store_test_results:
           path: build/test-results
         
