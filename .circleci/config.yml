@@ -9,7 +9,7 @@ jobs:
           name: codeAcademy_Reza
           
           command: | 
-            pip install -r requirements.txt
+            sudo pip install -r requirements.txt
                    python run.py
       - store_test_results:
           path: build/test-results
