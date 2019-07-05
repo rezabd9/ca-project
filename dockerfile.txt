@@ -1,0 +1,19 @@
+/Users/avro/Downloads/gitTest/ca-project
+FROM ubuntu:18.04
+COPY . /Users/avro/Downloads/gitTest/ca-project
+RUN make /Users/avro/Downloads/gitTest/ca-project
+CMD python /Users/avro/Downloads/gitTest/ca-project/run.py
+
+
+FROM ubuntu:latest
+RUN apt-get update -y
+RUN apt-get install -y python-pip python-dev build-essential
+COPY requirements.txt /Users/avro/Downloads/gitTest/ca-project/
+RUN pip install --no-cache-dir -r /Users/avro/Downloads/gitTest/ca-project/requirements.txt
+COPY run.py /Users/avro/Downloads/gitTest/ca-project/
+EXPOSE 5000
+CMD ["python", "/Users/avro/Downloads/gitTest/ca-project/run.py"]
+
+
+
+
